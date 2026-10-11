@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Simulated checkout{% endblock %}
+{% block content %}
+<form class="card narrow" method="post" action="{{ url_for('payments.mock_pay', reference=reference) }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+  <h1>Simulated checkout</h1>
+  <p class="error">Development mode - no real money moves.</p>
+  <p><strong>{{ order.item_title }}</strong></p>
+  <p>Amount: {{ order.currency }} {{ order.amount }}</p>
+  <p class="muted">Funds will be held in escrow until you confirm you received the item.</p>
+  <button class="btn" type="submit">Pay {{ order.currency }} {{ order.amount }}</button>
+</form>
+{% endblock %}

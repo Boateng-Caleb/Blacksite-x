@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Explore items near you</h1>
+<div class="filters">
+  <input id="q" placeholder="Search items">
+  <select id="category"><option value="">All categories</option>
+    {% for c in categories %}<option value="{{ c }}">{{ c|capitalize }}</option>{% endfor %}
+  </select>
+  <select id="radius">
+    <option value="5">Within 5 km</option><option value="10">10 km</option>
+    <option value="25" selected>25 km</option><option value="50">50 km</option>
+    <option value="200">200 km</option><option value="">Anywhere</option>
+  </select>
+  <button id="search" class="btn">Search</button>
+  <button id="locate" class="btn ghost">Use my location</button>
+</div>
+<p id="geo-note" class="muted">Finding your location…</p>
+<div id="grid" class="grid"></div>
+{% endblock %}

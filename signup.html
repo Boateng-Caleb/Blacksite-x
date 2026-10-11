@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Sign up{% endblock %}
+{% block content %}
+<form id="signup-form" class="card narrow">
+  <h1>Create account</h1>
+  <label>Full name<input name="name" required autocomplete="name"></label>
+  <label>Email<input type="email" name="email" required autocomplete="email"></label>
+  <label>Phone<input name="phone" autocomplete="tel"></label>
+  <label>Password (min 8 characters)<input type="password" name="password" minlength="8" required autocomplete="new-password"></label>
+  <p class="error" id="msg"></p>
+  <button class="btn" type="submit">Sign up</button>
+  <p class="muted">Already registered? <a href="{{ url_for('pages.login') }}">Log in</a></p>
+</form>
+{% endblock %}

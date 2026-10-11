@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Sell an item{% endblock %}
+{% block content %}
+<form id="sell-form" class="card narrow" enctype="multipart/form-data">
+  <h1>Sell an item</h1>
+  <label>Title<input name="title" required maxlength="120"></label>
+  <label>Description<textarea name="description" rows="4" maxlength="2000"></textarea></label>
+  <label>Category
+    <select name="category">{% for c in categories %}<option value="{{ c }}">{{ c|capitalize }}</option>{% endfor %}</select>
+  </label>
+  <label>Price ({{ currency }})<input name="price" type="number" step="0.01" min="0.01" required></label>
+  <label>Photo<input name="image" type="file" accept="image/png,image/jpeg,image/webp"></label>
+  <label>Pickup area / landmark<input name="address" maxlength="200" placeholder="e.g. Near UCC main gate"></label>
+  <input type="hidden" name="lat"><input type="hidden" name="lng">
+  <button type="button" id="get-loc" class="btn ghost">Use my current location</button>
+  <p id="loc-status" class="muted">Location not set (required, so nearby buyers can find this).</p>
+  <p class="error" id="msg"></p>
+  <button class="btn" type="submit">Publish item</button>
+</form>
+{% endblock %}
